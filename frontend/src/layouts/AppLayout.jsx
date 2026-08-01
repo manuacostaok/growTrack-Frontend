@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Logo from '../components/Logo';
 
 const NAV_ITEMS = [
   { to: '/', label: 'Dashboard', end: true },
@@ -18,7 +19,7 @@ export default function AppLayout() {
     <div className="flex min-h-screen">
       <aside className="sticky top-0 flex h-screen w-[232px] flex-shrink-0 flex-col gap-6 border-r border-borderDim p-3.5">
         <div className="flex items-center gap-2.5 px-2">
-          <div className="h-5 w-5 flex-shrink-0 rounded-[5px] bg-gradient-to-br from-chloro to-resin" />
+          <Logo size={20} />
           <span className="font-display text-[15px] font-semibold tracking-tight">GrowTrack Pro</span>
         </div>
 
@@ -59,6 +60,11 @@ export default function AppLayout() {
           <button onClick={logout} className="text-textDim hover:text-text">
             Cerrar sesión
           </button>
+          <div className="mt-3 flex gap-2.5 border-t border-borderDim pt-2.5 text-[10.5px]">
+            <a href="https://github.com/manuacostaok" target="_blank" rel="noopener noreferrer" className="hover:text-textDim">GitHub</a>
+            <a href="https://instagram.com/smstgrowers" target="_blank" rel="noopener noreferrer" className="hover:text-textDim">Instagram</a>
+            <a href="mailto:manuacostaok@hotmail.com" className="hover:text-textDim">Contacto</a>
+          </div>
         </div>
       </aside>
 

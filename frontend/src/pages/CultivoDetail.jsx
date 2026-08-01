@@ -128,6 +128,7 @@ export default function CultivoDetail() {
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-3.5 border-t border-borderDim pt-4 sm:grid-cols-4">
+            <Fact label="Tipo" value={cultivo.tipoCultivo === 'sala' ? `Sala (${cultivo.cantidadPlantas} plantas)` : 'Planta individual'} />
             <Fact label="Maceta" value={`${cultivo.maceta?.litros || '-'} L`} />
             <Fact label="Sustrato" value={cultivo.maceta?.sustrato || '-'} />
             <Fact label="Ubicación" value={cultivo.ubicacion || '-'} />

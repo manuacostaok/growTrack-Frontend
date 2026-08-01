@@ -42,8 +42,12 @@ export function AuthProvider({ children }) {
     setUser(null);
   }
 
+  function actualizarUsuarioParcial(cambios) {
+    setUser((u) => (u ? { ...u, ...cambios } : u));
+  }
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, actualizarUsuarioParcial }}>
       {children}
     </AuthContext.Provider>
   );

@@ -8,7 +8,8 @@ export default function Cultivos() {
   const [open, setOpen] = useState(false);
   const queryClient = useQueryClient();
   const { data } = useQuery({ queryKey: ['cultivos'], queryFn: () => listarCultivos() });
-  const { register, handleSubmit, reset, formState: { isSubmitting } } = useForm();
+  const { register, handleSubmit, reset, watch, formState: { isSubmitting } } = useForm({ defaultValues: { tipoCultivo: 'planta' } });
+  const tipoCultivo = watch('tipoCultivo');
 
   const mutation = useMutation({
     mutationFn: crearCultivo,
@@ -22,6 +23,8 @@ export default function Cultivos() {
   function onSubmit(values) {
     mutation.mutate({
       nombre: values.nombre,
+      tipoCultivo: values.tipoCultivo,
+      cantidadPlantas: values.tipoCultivo === 'sala' ? Number(values.cantidadPlantas) || 2 : 1,
       variedad: values.variedad,
       banco: values.banco,
       fotoperiodo: values.fotoperiodo,
@@ -81,6 +84,17 @@ export default function Cultivos() {
               <Field label="Nombre del cultivo" full>
                 <input {...register('nombre', { required: true })} placeholder="Carpa A - Planta 1" className="field" />
               </Field>
+              <Field label="Tipo de cultivo">
+                <select {...register('tipoCultivo')} className="field">
+                  <option value="planta">Planta individual</option>
+                  <option value="sala">Sala (varias plantas, misma genética)</option>
+                </select>
+              </Field>
+              {tipoCultivo === 'sala' && (
+                <Field label="Cantidad de plantas">
+                  <input type="number" min="2" {...register('cantidadPlantas')} placeholder="8" className="field" />
+                </Field>
+              )}
               <Field label="Variedad">
                 <input {...register('variedad')} placeholder="Gorilla Glue #4" className="field" />
               </Field>

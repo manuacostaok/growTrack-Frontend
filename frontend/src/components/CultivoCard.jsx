@@ -26,7 +26,14 @@ export default function CultivoCard({ cultivo }) {
     >
       <div className="mb-2.5 flex items-start justify-between">
         <div>
-          <div className="font-display text-[15px] font-semibold">{cultivo.nombre}</div>
+          <div className="flex items-center gap-1.5">
+            <div className="font-display text-[15px] font-semibold">{cultivo.nombre}</div>
+            {cultivo.tipoCultivo === 'sala' && (
+              <span className="rounded-md bg-surface2 px-1.5 py-0.5 font-mono text-[9.5px] text-textDim">
+                sala · {cultivo.cantidadPlantas} plantas
+              </span>
+            )}
+          </div>
           <div className="mt-0.5 text-xs text-textDim">{cultivo.variedad || 'Sin variedad'}</div>
         </div>
         <span className={`whitespace-nowrap rounded-md px-2 py-1 font-mono text-[10.5px] ${BADGE_CLASSES[cultivo.etapa]}`}>
