@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.field {
+  @apply rounded-lg border border-borderStrong bg-surface2 px-3 py-2 text-[13px] outline-none;
+}
+.field:focus {
+  @apply border-chloro;
+}
