@@ -16,7 +16,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-borderDim bg-bg/90 px-8 py-4 backdrop-blur">
+      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-borderDim bg-bg/90 px-4 py-3 backdrop-blur sm:px-8 sm:py-4">
         <div>
           <div className="font-display text-[19px] font-semibold tracking-tight">Dashboard</div>
           <div className="mt-0.5 text-[12.5px] text-textDim">Resumen de todos tus cultivos activos</div>
@@ -26,7 +26,7 @@ export default function Dashboard() {
         </span>
       </div>
 
-      <div className="max-w-[1180px] p-8">
+      <div className="max-w-[1180px] p-4 sm:p-8">
         <div className="mb-7 grid grid-cols-2 gap-3 md:grid-cols-4">
           <StatCard label="Cultivos totales" value={conteos.total} />
           <StatCard label="En vegetativo" value={conteos.vegetativo} />

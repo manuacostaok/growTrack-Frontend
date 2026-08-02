@@ -22,7 +22,7 @@ export default function CultivoCard({ cultivo }) {
   return (
     <div
       onClick={() => navigate(`/cultivos/${cultivo._id}`)}
-      className="cursor-pointer rounded-card border border-borderDim bg-surface1 p-4 transition hover:border-borderStrong hover:-translate-y-0.5"
+      className="grow-card cursor-pointer rounded-card border border-borderDim bg-surface1 p-4 transition hover:border-borderStrong hover:-translate-y-0.5"
     >
       <div className="mb-2.5 flex items-start justify-between">
         <div>

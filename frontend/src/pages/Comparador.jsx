@@ -28,12 +28,12 @@ export default function Comparador() {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-8 py-4 backdrop-blur">
+      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-4 py-3 backdrop-blur sm:px-8 sm:py-4">
         <div className="font-display text-[19px] font-semibold tracking-tight">Comparador</div>
         <div className="mt-0.5 text-[12.5px] text-textDim">Comparná el rendimiento de dos cultivos</div>
       </div>
 
-      <div className="max-w-[1180px] p-8">
+      <div className="max-w-[1180px] p-4 sm:p-8">
         <div className="mb-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <select value={idA} onChange={(e) => setIdA(e.target.value)} className="field">
             <option value="">Elegí el primer cultivo</option>

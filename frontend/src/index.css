@@ -12,3 +12,32 @@ body {
 .field:focus {
   @apply border-chloro;
 }
+
+/* "Grow Light": tira de luz arriba de cada card + glow suave al interactuar */
+.grow-card {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.grow-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  border-radius: 0 0 3px 3px;
+  background: linear-gradient(90deg, transparent, #5C9B6C, #D8A84E, transparent);
+  opacity: 0.55;
+}
+.grow-card:hover {
+  box-shadow: 0 10px 32px -14px rgba(92, 155, 108, 0.35);
+}
+
+@keyframes seed-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(216, 168, 78, 0.45); }
+  50% { box-shadow: 0 0 0 8px rgba(216, 168, 78, 0); }
+}
+.fab-pulse {
+  animation: seed-pulse 2.6s ease-in-out infinite;
+}

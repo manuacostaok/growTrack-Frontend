@@ -39,12 +39,12 @@ export default function Planes() {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-8 py-4 backdrop-blur">
+      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-4 py-3 backdrop-blur sm:px-8 sm:py-4">
         <div className="font-display text-[19px] font-semibold tracking-tight">Planes</div>
         <div className="mt-0.5 text-[12.5px] text-textDim">Tu plan actual: {user?.plan || 'free'}</div>
       </div>
 
-      <div className="max-w-[1180px] p-8">
+      <div className="max-w-[1180px] p-4 sm:p-8">
         {estado === 'exito' && (
           <div className="mb-5 rounded-lg border border-chloro/30 bg-chloro/10 px-4 py-3 text-[13px] text-[#8FCF9F]">
             Pago recibido. Tu plan se actualiza en unos segundos (esperá la confirmación del webhook).

@@ -17,12 +17,12 @@ export default function Admin() {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-8 py-4 backdrop-blur">
+      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-4 py-3 backdrop-blur sm:px-8 sm:py-4">
         <div className="font-display text-[19px] font-semibold tracking-tight">Panel Admin</div>
         <div className="mt-0.5 text-[12.5px] text-textDim">Usuarios, planes y métricas globales</div>
       </div>
 
-      <div className="max-w-[1180px] p-8">
+      <div className="max-w-[1180px] p-4 sm:p-8">
         <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           <Stat label="Usuarios totales" value={metricas?.totalUsuarios ?? '—'} />
           <Stat label="Free" value={porPlan.free ?? 0} />

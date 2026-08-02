@@ -16,8 +16,12 @@ export default function StageBar({ etapa, size = 'sm' }) {
       {STAGES.map((s, i) => (
         <div
           key={s}
-          className={`flex-1 rounded-full ${height} ${
-            i < idx ? 'bg-chloro' : i === idx ? 'bg-resin' : 'bg-borderDim'
+          className={`flex-1 rounded-full ${height} transition-all ${
+            i < idx
+              ? 'bg-chloro'
+              : i === idx
+              ? 'bg-resin shadow-[0_0_9px_rgba(216,168,78,0.75)]'
+              : 'bg-borderDim'
           }`}
         />
       ))}

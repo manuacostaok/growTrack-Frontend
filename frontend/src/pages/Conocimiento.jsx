@@ -29,12 +29,12 @@ export default function Conocimiento() {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-8 py-4 backdrop-blur">
+      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-4 py-3 backdrop-blur sm:px-8 sm:py-4">
         <div className="font-display text-[19px] font-semibold tracking-tight">Base de conocimiento</div>
         <div className="mt-0.5 text-[12.5px] text-textDim">Deficiencias, plagas, hongos, PH/EC, secado y curado</div>
       </div>
 
-      <div className="max-w-[1180px] p-8">
+      <div className="max-w-[1180px] p-4 sm:p-8">
         <div className="mb-5 flex flex-col gap-2.5 sm:flex-row">
           <input
             value={buscar}

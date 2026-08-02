@@ -51,12 +51,12 @@ export default function DiagnosticoIA() {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-8 py-4 backdrop-blur">
+      <div className="sticky top-0 z-10 border-b border-borderDim bg-bg/90 px-4 py-3 backdrop-blur sm:px-8 sm:py-4">
         <div className="font-display text-[19px] font-semibold tracking-tight">Diagnóstico por IA</div>
         <div className="mt-0.5 text-[12.5px] text-textDim">Subí una foto y recibí una estimación de posibles problemas</div>
       </div>
 
-      <div className="max-w-[720px] p-8">
+      <div className="max-w-[720px] p-4 sm:p-8">
         {!esPlanPago && (
           <div className={`mb-5 rounded-card border p-4 text-[13px] ${
             gratisDisponible
