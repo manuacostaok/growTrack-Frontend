@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
-import AuthBackground from '../components/AuthBackground';
+import Aurora from '../components/Aurora';
 
 export default function Register() {
   const { register: registerUser } = useAuth();
@@ -22,7 +22,9 @@ export default function Register() {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-bg px-4">
-      <AuthBackground />
+      <div className="absolute inset-0">
+        <Aurora colorStops={['#5C9B6C', '#16221A', '#D8A84E']} amplitude={1.0} blend={0.5} speed={0.8} />
+      </div>
       <div className="relative z-10 w-full max-w-[380px] rounded-card border border-borderStrong bg-surface1/90 p-7 backdrop-blur-sm">
         <div className="mb-1 font-display text-lg font-semibold">Crear cuenta</div>
         <div className="mb-6 text-[13px] text-textDim">Empezá a registrar tus cultivos</div>
