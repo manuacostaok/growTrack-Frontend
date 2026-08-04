@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
+import AuthBackground from '../components/AuthBackground';
 
 export default function Login() {
   const { login } = useAuth();
@@ -20,8 +21,9 @@ export default function Login() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-[380px] rounded-card border border-borderStrong bg-surface1 p-7">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-bg px-4">
+      <AuthBackground />
+      <div className="relative z-10 w-full max-w-[380px] rounded-card border border-borderStrong bg-surface1/90 p-7 backdrop-blur-sm">
         <div className="mb-1 font-display text-lg font-semibold">Iniciar sesión</div>
         <div className="mb-6 text-[13px] text-textDim">Entrá a tu cuenta de GrowTrack Pro</div>
 

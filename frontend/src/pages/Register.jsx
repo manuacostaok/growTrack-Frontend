@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
+import AuthBackground from '../components/AuthBackground';
 
 export default function Register() {
   const { register: registerUser } = useAuth();
@@ -20,8 +21,9 @@ export default function Register() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-[380px] rounded-card border border-borderStrong bg-surface1 p-7">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-bg px-4">
+      <AuthBackground />
+      <div className="relative z-10 w-full max-w-[380px] rounded-card border border-borderStrong bg-surface1/90 p-7 backdrop-blur-sm">
         <div className="mb-1 font-display text-lg font-semibold">Crear cuenta</div>
         <div className="mb-6 text-[13px] text-textDim">Empezá a registrar tus cultivos</div>
 

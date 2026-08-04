@@ -7,13 +7,13 @@ const PLANES = [
   {
     id: 'pro',
     nombre: 'Pro',
-    precio: '$9.000/mes',
+    precio: '$15.000/mes',
     features: ['Cultivos y fotos ilimitados', 'Calendario inteligente', 'Estadísticas y comparador', 'Exportar PDF y Excel'],
   },
   {
     id: 'premium',
     nombre: 'Premium',
-    precio: '$19.000/mes',
+    precio: '$30.000/mes',
     features: ['Todo lo de Pro', 'Diagnóstico por imagen', 'Plan de riego sugerido', 'Predicción de cosecha'],
   },
 ];
