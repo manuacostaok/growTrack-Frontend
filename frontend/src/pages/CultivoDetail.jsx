@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { obtenerCultivo, cambiarEtapaCultivo } from '../api/cultivos';
 import { crearSeguimiento, listarSeguimientos, subirFotosSeguimiento } from '../api/seguimientos';
 import StageBar, { STAGE_LABELS, STAGES } from '../components/StageBar';
@@ -27,13 +28,18 @@ export default function CultivoDetail() {
     mutationFn: (payload) => crearSeguimiento(id, payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['seguimientos', id] });
+      toast.success('Registro guardado');
       reset();
     },
+    onError: (err) => toast.error(err.response?.data?.error || 'No se pudo guardar el registro.'),
   });
 
   const etapaMutation = useMutation({
     mutationFn: (etapa) => cambiarEtapaCultivo(id, etapa),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['cultivo', id] }),
+    onSuccess: (_, etapa) => {
+      queryClient.invalidateQueries({ queryKey: ['cultivo', id] });
+      toast.success(`Etapa actualizada a ${STAGE_LABELS[etapa]}`);
+    },
   });
 
   function onSubmit(values) {

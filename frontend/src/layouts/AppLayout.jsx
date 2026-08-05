@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { LayoutDashboard, Sprout, Calendar, GitCompare, BookOpen, Sparkles, CreditCard, ShieldCheck, Menu, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import Logo from '../components/Logo';
+import FeedbackButton from '../components/FeedbackButton';
 
 const NAV_ITEMS = [
   { to: '/', label: 'Dashboard', end: true, icon: LayoutDashboard },
@@ -62,6 +63,9 @@ function FullNav({ onNavigate }) {
 
       <div className="mt-auto border-t border-borderDim pt-3 text-xs text-textFaint">
         <div className="mb-2.5 truncate px-1">{user?.email}</div>
+        <div className="mb-2">
+          <FeedbackButton />
+        </div>
         <button
           onClick={logout}
           className="flex w-full items-center justify-center gap-2 rounded-lg border border-borderStrong bg-surface2 px-3 py-2.5 text-[13px] font-medium text-textDim transition hover:border-danger/50 hover:bg-danger/10 hover:text-danger"

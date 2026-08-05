@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import StatCard from '../components/StatCard';
 import CultivoCard from '../components/CultivoCard';
 import Aurora from '../components/Aurora';
+import AnimatedIntro from '../components/AnimatedIntro';
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -27,7 +28,7 @@ export default function Dashboard() {
 
       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-borderDim bg-bg/90 px-4 py-3 backdrop-blur sm:px-8 sm:py-4">
         <div>
-          <div className="font-display text-[19px] font-semibold tracking-tight">Dashboard</div>
+          <AnimatedIntro />
           <div className="mt-0.5 text-[12.5px] text-textDim">Resumen de todos tus cultivos activos</div>
         </div>
         <span className="rounded-full border border-resin/30 bg-resin/10 px-2.5 py-1 font-mono text-[11px] text-resin">

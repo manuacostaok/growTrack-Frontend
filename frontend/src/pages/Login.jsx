@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 import Aurora from '../components/Aurora';
 
@@ -14,6 +15,7 @@ export default function Login() {
     setError('');
     try {
       await login(values.email, values.password);
+      toast.success('¡Bienvenido de nuevo!');
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.error || 'No se pudo iniciar sesión.');

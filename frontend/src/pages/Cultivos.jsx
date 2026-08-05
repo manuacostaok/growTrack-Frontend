@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { crearCultivo, listarCultivos } from '../api/cultivos';
 import CultivoCard from '../components/CultivoCard';
 
@@ -13,11 +14,13 @@ export default function Cultivos() {
 
   const mutation = useMutation({
     mutationFn: crearCultivo,
-    onSuccess: () => {
+    onSuccess: (cultivo) => {
       queryClient.invalidateQueries({ queryKey: ['cultivos'] });
+      toast.success(`"${cultivo.nombre}" creado 🌱`);
       reset();
       setOpen(false);
     },
+    onError: (err) => toast.error(err.response?.data?.error || 'No se pudo crear el cultivo.'),
   });
 
   function onSubmit(values) {

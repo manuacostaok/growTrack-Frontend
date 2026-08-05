@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 import Aurora from '../components/Aurora';
 
@@ -14,6 +15,7 @@ export default function Register() {
     setError('');
     try {
       await registerUser(values.nombre, values.email, values.password);
+      toast.success('¡Cuenta creada! Bienvenido a GrowTrack Pro 🌱');
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.error || 'No se pudo crear la cuenta.');

@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { listarUsuariosAdmin, cambiarPlanUsuarioAdmin, obtenerMetricasAdmin } from '../api/admin';
+import { listarFeedbackAdmin } from '../api/feedback';
 
 const PLANES = ['free', 'pro', 'premium'];
 
@@ -7,6 +8,7 @@ export default function Admin() {
   const queryClient = useQueryClient();
   const { data: metricas } = useQuery({ queryKey: ['admin-metricas'], queryFn: obtenerMetricasAdmin });
   const { data: usuariosData } = useQuery({ queryKey: ['admin-usuarios'], queryFn: () => listarUsuariosAdmin() });
+  const { data: feedback } = useQuery({ queryKey: ['admin-feedback'], queryFn: listarFeedbackAdmin });
 
   const cambiarPlan = useMutation({
     mutationFn: ({ id, plan }) => cambiarPlanUsuarioAdmin(id, plan),
@@ -36,7 +38,7 @@ export default function Admin() {
         </div>
 
         <div className="mb-3 font-display text-[14.5px] font-semibold">Usuarios</div>
-        <div className="overflow-hidden rounded-card border border-borderDim">
+        <div className="mb-8 overflow-hidden rounded-card border border-borderDim">
           <div className="grid grid-cols-[1.5fr_1.5fr_1fr_1fr] border-b border-borderDim bg-surface1 p-3 text-[12px] font-semibold text-textDim">
             <div>Nombre</div><div>Email</div><div>Plan</div><div>Cambiar plan</div>
           </div>
@@ -52,6 +54,23 @@ export default function Admin() {
               >
                 {PLANES.map((p) => <option key={p} value={p}>{p}</option>)}
               </select>
+            </div>
+          ))}
+        </div>
+
+        <div className="mb-3 font-display text-[14.5px] font-semibold">Feedback recibido</div>
+        <div className="flex flex-col gap-2.5">
+          {(feedback || []).length === 0 && (
+            <div className="text-[12.5px] text-textFaint">Todavía no llegó ningún comentario.</div>
+          )}
+          {(feedback || []).map((f) => (
+            <div key={f._id} className="rounded-lg border border-borderDim bg-surface1 p-3.5">
+              <div className="mb-1 flex items-center justify-between">
+                <span className="text-[12.5px] font-medium">{f.usuario?.nombre} <span className="text-textFaint">({f.usuario?.email})</span></span>
+                <span className="font-mono text-[10.5px] text-textFaint">{new Date(f.createdAt).toLocaleDateString('es-AR')}</span>
+              </div>
+              <div className="text-[13px] text-textDim">{f.mensaje}</div>
+              {f.pagina && <div className="mt-1 font-mono text-[10.5px] text-textFaint">desde {f.pagina}</div>}
             </div>
           ))}
         </div>

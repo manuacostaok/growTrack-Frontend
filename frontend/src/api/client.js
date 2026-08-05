@@ -1,4 +1,5 @@
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api/v1';
 
@@ -48,5 +49,15 @@ api.interceptors.response.use(
     }
   }
 );
+
+// Aviso genérico para lo que ninguna pantalla maneja puntualmente: sin conexión o error del servidor.
+api.interceptors.response.use(undefined, (error) => {
+  if (!error.response) {
+    toast.error('No hay conexión con el servidor. Revisá tu internet.');
+  } else if (error.response.status >= 500) {
+    toast.error('Algo falló de nuestro lado. Probá de nuevo en un momento.');
+  }
+  return Promise.reject(error);
+});
 
 export default api;
