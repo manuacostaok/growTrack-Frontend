@@ -41,3 +41,19 @@ body {
 .fab-pulse {
   animation: seed-pulse 2.6s ease-in-out infinite;
 }
+
+/* Nav items: brillo suave al pasar el mouse/dedo, en el color de acento */
+.nav-glow {
+  transition: color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease, text-shadow 0.18s ease;
+}
+.nav-glow:hover, .nav-glow:focus-visible {
+  color: #D8A84E;
+  text-shadow: 0 0 12px rgba(216, 168, 78, 0.55);
+}
+.nav-glow-icon {
+  transition: color 0.18s ease, box-shadow 0.18s ease;
+}
+.nav-glow-icon:hover, .nav-glow-icon:focus-visible {
+  color: #D8A84E;
+  box-shadow: 0 0 14px rgba(216, 168, 78, 0.4);
+}

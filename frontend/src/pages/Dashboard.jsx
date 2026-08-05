@@ -4,6 +4,7 @@ import { obtenerResumenDashboard, listarCultivos } from '../api/cultivos';
 import { useAuth } from '../context/AuthContext';
 import StatCard from '../components/StatCard';
 import CultivoCard from '../components/CultivoCard';
+import Aurora from '../components/Aurora';
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -15,7 +16,15 @@ export default function Dashboard() {
   const cultivos = cultivosData?.cultivos || [];
 
   return (
-    <div>
+    <div className="relative">
+      {/* Aurora ancla abajo, espejada verticalmente para que el efecto "suba" desde el piso */}
+      <div
+        className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-[380px] opacity-35"
+        style={{ transform: 'scaleY(-1)' }}
+      >
+        <Aurora colorStops={['#5C9B6C', '#16221A', '#D8A84E']} amplitude={1.0} blend={0.55} speed={0.6} />
+      </div>
+
       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-borderDim bg-bg/90 px-4 py-3 backdrop-blur sm:px-8 sm:py-4">
         <div>
           <div className="font-display text-[19px] font-semibold tracking-tight">Dashboard</div>
