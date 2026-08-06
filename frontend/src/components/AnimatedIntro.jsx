@@ -77,7 +77,7 @@ export default function AnimatedIntro() {
         />
       </svg>
 
-      <h1 className="font-display text-[22px] font-semibold tracking-tight">
+      <h1 className="font-display text-[50px] font-semibold tracking-tight">
         {TITULO.slice(0, letras)}
         {letras < TITULO.length && <span className="animate-pulse text-chloro">|</span>}
       </h1>

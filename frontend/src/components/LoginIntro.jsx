@@ -28,7 +28,7 @@ export default function LoginIntro() {
       </h1>
 
       {mostrarIcono && (
-        <svg width="40" height="40" viewBox="0 0 46 46" className="overflow-visible">
+        <svg width="80" height="80" viewBox="0 0 46 46" className="overflow-visible">
           <motion.path
             d="M6 36 Q23 32 40 36"
             stroke="#333C2C"
