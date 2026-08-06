@@ -1,11 +1,16 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Spinner from './Spinner';
 
 export default function RequireAuth() {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <div className="flex min-h-screen items-center justify-center text-textDim">Cargando…</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Spinner label="Cargando…" />
+      </div>
+    );
   }
   if (!user) {
     return <Navigate to="/login" replace />;

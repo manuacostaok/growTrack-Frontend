@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { obtenerCultivo, cambiarEtapaCultivo } from '../api/cultivos';
 import { crearSeguimiento, listarSeguimientos, subirFotosSeguimiento } from '../api/seguimientos';
 import StageBar, { STAGE_LABELS, STAGES } from '../components/StageBar';
+import Spinner from '../components/Spinner';
 
 function diasDesde(fecha) {
   if (!fecha) return 0;
@@ -68,7 +69,7 @@ export default function CultivoDetail() {
     );
   }
 
-  if (!cultivo) return null;
+  if (!cultivo) return <Spinner label="Cargando cultivo…" />;
   const dias = diasDesde(cultivo.fechaGerminacion);
   const lista = [...(seguimientos || [])].sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 

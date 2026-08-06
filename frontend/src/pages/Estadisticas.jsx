@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { obtenerEstadisticas } from '../api/estadisticas';
 import { actualizarCultivo } from '../api/cultivos';
 import { STAGE_LABELS } from '../components/StageBar';
+import Spinner from '../components/Spinner';
 
 export default function Estadisticas() {
   const { id } = useParams();
@@ -20,7 +21,7 @@ export default function Estadisticas() {
   });
 
   if (isLoading || !stats) {
-    return <div className="p-8 text-textDim">Cargando…</div>;
+    return <Spinner label="Cargando estadísticas…" />;
   }
 
   return (
