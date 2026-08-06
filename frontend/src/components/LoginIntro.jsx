@@ -22,7 +22,7 @@ export default function LoginIntro() {
 
   return (
     <div className="mb-6 flex flex-col items-center gap-3">
-      <h1 className="font-display text-2xl font-semibold tracking-tight">
+      <h1 className="font-display text-[50px] font-semibold tracking-tight">
         {TITULO.slice(0, letras)}
         {letras < TITULO.length && <span className="animate-pulse text-chloro">|</span>}
       </h1>
