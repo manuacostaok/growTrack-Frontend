@@ -39,18 +39,24 @@ export default function Admin() {
 
         <div className="mb-3 font-display text-[14.5px] font-semibold">Usuarios</div>
         <div className="mb-8 overflow-hidden rounded-card border border-borderDim">
-          <div className="grid grid-cols-[1.5fr_1.5fr_1fr_1fr] border-b border-borderDim bg-surface1 p-3 text-[12px] font-semibold text-textDim">
+          <div className="hidden border-b border-borderDim bg-surface1 p-3 text-[12px] font-semibold text-textDim sm:grid sm:grid-cols-[1.5fr_1.5fr_1fr_1fr]">
             <div>Nombre</div><div>Email</div><div>Plan</div><div>Cambiar plan</div>
           </div>
           {(usuariosData?.usuarios || []).map((u) => (
-            <div key={u._id} className="grid grid-cols-[1.5fr_1.5fr_1fr_1fr] items-center border-b border-borderDim p-3 text-[13px] last:border-none">
-              <div>{u.nombre}</div>
-              <div className="text-textDim">{u.email}</div>
-              <div className="font-mono text-[11.5px]">{u.plan}</div>
+            <div
+              key={u._id}
+              className="flex flex-col gap-2 border-b border-borderDim p-3 text-[13px] last:border-none sm:grid sm:grid-cols-[1.5fr_1.5fr_1fr_1fr] sm:items-center sm:gap-0"
+            >
+              <div className="flex items-center justify-between sm:block">
+                <span className="font-medium">{u.nombre}</span>
+                <span className="font-mono text-[11px] text-textFaint sm:hidden">{u.plan}</span>
+              </div>
+              <div className="truncate text-textDim">{u.email}</div>
+              <div className="hidden font-mono text-[11.5px] sm:block">{u.plan}</div>
               <select
                 value={u.plan}
                 onChange={(e) => cambiarPlan.mutate({ id: u._id, plan: e.target.value })}
-                className="field"
+                className="field w-full sm:w-auto"
               >
                 {PLANES.map((p) => <option key={p} value={p}>{p}</option>)}
               </select>

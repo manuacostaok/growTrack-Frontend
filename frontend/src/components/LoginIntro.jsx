@@ -8,27 +8,56 @@ export default function LoginIntro() {
   const [mostrarIcono, setMostrarIcono] = useState(false);
 
   useEffect(() => {
-    let i = 0;
-    const t = setInterval(() => {
-      i += 1;
-      setLetras(i);
-      if (i >= TITULO.length) {
-        clearInterval(t);
-        setTimeout(() => setMostrarIcono(true), 150);
-      }
-    }, 60);
-    return () => clearInterval(t);
+    // El tipeo arranca cuando el sol ya salió (ver delay del <motion.g> del sol).
+    const arrancar = setTimeout(() => {
+      let i = 0;
+      const t = setInterval(() => {
+        i += 1;
+        setLetras(i);
+        if (i >= TITULO.length) {
+          clearInterval(t);
+          setTimeout(() => setMostrarIcono(true), 150);
+        }
+      }, 60);
+    }, 700);
+    return () => clearTimeout(arrancar);
   }, []);
 
   return (
-    <div className="mb-6 flex flex-col items-center gap-3">
-      <h1 className="font-display text-[50px] font-semibold tracking-tight">
+    <div className="mb-6 flex flex-col items-center gap-2">
+      <svg width="54" height="40" viewBox="0 0 54 40" className="overflow-visible">
+        <motion.g
+          initial={{ y: 26, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          <motion.g
+            animate={{ rotate: 360 }}
+            transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+            style={{ transformOrigin: '27px 20px' }}
+          >
+            {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+              <line
+                key={deg}
+                x1="27" y1="6" x2="27" y2="11"
+                stroke="#D8A84E"
+                strokeWidth="2"
+                strokeLinecap="round"
+                transform={`rotate(${deg} 27 20)`}
+              />
+            ))}
+          </motion.g>
+          <circle cx="27" cy="20" r="9" fill="#D8A84E" />
+        </motion.g>
+      </svg>
+
+      <h1 className="font-display text-[50px] font-semibold leading-none tracking-tight">
         {TITULO.slice(0, letras)}
         {letras < TITULO.length && <span className="animate-pulse text-chloro">|</span>}
       </h1>
 
       {mostrarIcono && (
-        <svg width="80" height="80" viewBox="0 0 46 46" className="overflow-visible">
+        <svg width="40" height="40" viewBox="0 0 46 46" className="mt-1 overflow-visible">
           <motion.path
             d="M6 36 Q23 32 40 36"
             stroke="#333C2C"

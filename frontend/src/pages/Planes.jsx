@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../context/AuthContext';
 import { crearSuscripcion, cancelarSuscripcion, obtenerMiSuscripcion } from '../api/pagos';
+import PushNotifications from '../components/PushNotifications';
 
 const PLANES = [
   {
     id: 'pro',
     nombre: 'Pro',
     precio: '$15.000/mes',
-    features: ['Cultivos y fotos ilimitados', 'Calendario inteligente', 'Estadísticas y comparador', 'Exportar PDF y Excel'],
+    features: ['Cultivos y fotos ilimitados', 'Calendario inteligente', 'Recordatorios push al celular', 'Estadísticas y comparador', 'Exportar PDF y Excel'],
   },
   {
     id: 'premium',
@@ -99,6 +100,23 @@ export default function Planes() {
               </button>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-borderDim bg-surface1 p-6">
+          <div className="mb-1 font-display text-base font-semibold">Recordatorios push al celular</div>
+          {user?.plan === 'pro' || user?.plan === 'premium' ? (
+            <>
+              <p className="mb-4 text-[12.5px] text-textDim">
+                Te avisamos cuando se acerca un riego, un cambio de fotoperíodo o cualquier evento que marques
+                con recordatorio en el Calendario.
+              </p>
+              <PushNotifications />
+            </>
+          ) : (
+            <p className="text-[12.5px] text-textDim">
+              Disponible en los planes Pro y Premium. <Link to="#" className="text-resin underline" onClick={(e) => e.preventDefault()}>Elegí un plan arriba ↑</Link>
+            </p>
+          )}
         </div>
       </div>
     </div>

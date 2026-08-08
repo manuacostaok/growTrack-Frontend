@@ -81,6 +81,7 @@ export default function Calendario() {
       titulo: form.get('titulo'),
       fecha: selected,
       notas: form.get('notas'),
+      recordatorio: form.get('recordatorio') === 'on',
     });
   }
 
@@ -163,6 +164,10 @@ export default function Calendario() {
                 </select>
                 <input name="titulo" required placeholder="Título" className="field" />
                 <textarea name="notas" placeholder="Notas (opcional)" className="field min-h-[50px]" />
+                <label className="flex items-center gap-2 text-[12px] text-textDim">
+                  <input type="checkbox" name="recordatorio" className="accent-chloro" />
+                  Avisarme (mail y push si tengo Pro/Premium)
+                </label>
                 <div className="flex gap-2">
                   <button type="button" onClick={() => setShowForm(false)} className="flex-1 rounded-lg border border-borderStrong px-3 py-1.5 text-[12.5px]">Cancelar</button>
                   <button disabled={crearMutation.isPending} className="flex-1 rounded-lg bg-chloro px-3 py-1.5 text-[12.5px] font-semibold text-[#0B140D]">Guardar</button>
